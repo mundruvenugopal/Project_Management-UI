@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Role</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="Role.css">
+	</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Create Role</h1>
+    <div id="message" class="alert alert-success" style="display: none;"></div>
+    <form id="roleForm"novalidate>
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" class="form-control" required/>
+			<span id="nameError" class="text-danger" style="display: none;"></span>
+        </div>    
+        <button type="submit" class="btn btn-primary">Add Role</button>
+    </form>
+</div>
+<script src="Role.js"></script> 
+</body>
+</html>

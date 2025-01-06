@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Index.css">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class='dashboard'>
+	    <div class="dashboard-nav">
+			<h2 class ='pm'>Project Management</h2>
+	        <nav class="dashboard-nav-list">
+                <a href="#" class="dashboard-nav-item" > <i class="fas fa-home"></i> Home </a>
+                <a href="#" class="dashboard-nav-item active" onclick="showWelcomeMessage()"> <i class="fas fa-tachometer-alt"></i> Dashboard </a>
+                <a href="#" class="dashboard-nav-item" onclick="loadUsersList()"> <i class="fas fa-user user-icon"></i> Users </a>
+                <a href="#" class="dashboard-nav-item" onclick="loadProjectsList()"> <i class="fas fa-project-diagram"></i> Projects </a>
+                <div class="nav-item-divider"></div>
+                <a href="#" class="dashboard-nav-item"> <i class="fas fa-sign-out-alt"></i> Logout </a>
+            </nav>
+	    </div>
+		<div class='dashboard-app'>
+			<div id="welcomeMessage" style="display: none;">
+				<!--<h2>Welcome to the Dashboard!</h2>
+				<p>Your account type is: Administrator</p>-->
+				<div class="hello-container">
+					<div class="hello-box" id="userCountContainer">
+						<h2>Users</h2>
+					       <h6>Total Users: <span id="userCount">0</span></h6>
+						   <h6>Active Users: <span id="usersActiveCount">0</span></h6>
+						   <h6>InActive Users: <span id="inActiveUsersCount">0</span></h6>
+					   </div>
+				        <div class="hello-box">
+				            <h3>Projects</h3>
+							<h6>Total Projects: <span id="projectsCount">0</span></h6>
+							<h6>Active Projects: <span id="projectsActiveCount">0</span></h6>
+							<h6>InActive Projects: <span id="projectsInActiveCount">0</span></h6>
+				        </div>
+				    </div>
+			</div>
+
+			<div id="userListContainer" style="display:none;">
+			    <h2>Users List</h2>
+				<div class="d-flex justify-content-between align-items-center mb-3">
+				    <h3 class="mb-0"></h3>
+				    <button class="btn btn-primary" onclick="loadUserCreationForm()">Create User</button>
+				</div>
+				
+			    <div class="table-responsive">
+			        <table class="table table-bordered table-striped" id="userTable">
+			            <thead class="thead-dark">
+			                <tr>
+			                    <th>Index</th>
+								<th>Id</th>
+			                    <th>First Name</th>
+			                    <th>Last Name</th>
+			                    <th>Email</th>
+								<th>CreatedOn</th>
+								<th>CreatedBy</th>
+								<th>Role</th>
+								<th>Action</th>
+			                </tr>
+			            </thead>
+			            <tbody></tbody> 
+			        </table>
+					
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+					       <div>
+					           <label for="pageSizeDropdown">Rows per page:</label>
+					           <select id="pageSizeDropdown" class="form-control d-inline-block" style="width: auto;" onchange="updatePageSize()">
+					               <option value="5" selected>5</option>
+					               <option value="10">10</option>
+					               <option value="15">15</option>
+					               <option value="20">20</option>
+					           </select>
+					       </div>
+
+					       <nav aria-label="Page navigation">
+					           <ul class="pagination" id="paginationControls"></ul>
+					       </nav>
+					</div>	
+				
+				</div>
+			</div>
+			
+			
+			<div id="userCreationContainer" style="display:none;"></div>
+			
+			<div class="profile-section">
+			    <i class="fas fa-user-circle profile-icon" onclick="toggleProfileMenu()"></i>
+			    <div class="profile-menu">
+			        <ul>
+			        <li><a href="#" onclick="userDetails()">View Details</a></li>  
+			            <li><a href="AdminLogin.html">Logout</a></li>
+			        </ul>
+			    </div>
+			</div>
+			
+			
+			<div id="userDetailsContainer" style="display:none;">
+			</div>
+			
+			
+			<div id="projectListContainer" style="display:none;">
+						    <h2>Projects List</h2>
+							<div class="d-flex justify-content-between align-items-center mb-3">
+							    <h3 class="mb-0"></h3>
+							    <button class="btn btn-primary" onclick="loadProjectCreationForm()">Create Project</button>
+							</div>
+						    <div class="table-responsive">
+						        <table class="table table-bordered table-striped" id="projectTable">
+						            <thead class="thead-dark">
+						                <tr>
+						                    <th>Index</th>
+						                    <th>Title</th>
+											<th>Started Date</th>
+											<th>End Date</th>
+											<th>Action</th>
+						                </tr>
+						            </thead>
+						            <tbody></tbody> 
+						        </table>
+			                    <!-- Pagination and Rows per page options -->
+			                    <div class="d-flex justify-content-between align-items-center mt-3">
+								       <div>
+								           <label for="pageSizeDropdown">Rows per page:</label>
+								           <select id="pageSizeDropdown" class="form-control d-inline-block" style="width: auto;" onchange="updatePageSize()">
+								               <option value="5" selected>5</option>
+								               <option value="10">10</option>
+								               <option value="15">15</option>
+								               <option value="20">20</option>
+								           </select>
+								       </div>
+
+								       <!-- Pagination controls aligned to the right -->
+								       <nav aria-label="Page navigation">
+								           <ul class="pagination" id="paginationControls"></ul>
+								       </nav>
+								</div>	
+							
+							
+							
+							</div>
+						</div>
+							
+			
+						<div id="projectCreationContainer" style="display:none;"></div>
+			
+		
+						<div id="updateUserContainer"style="display:none;>
+						        <h2>Update User</h2>
+						        <form id="updateForm">
+						            <input type="hidden" id="userId">
+						            <div class="form-group">
+						                <label for="firstName">First Name</label>
+						                <input type="text" id="firstName" class="form-control" required>
+						            </div>
+						            <div class="form-group">
+						                <label for="lastName">Last Name</label>
+						                <input type="text" id="lastName" class="form-control" required>
+						            </div>
+						            <div class="form-group">
+						                <label for="email">Email</label>
+						                <input type="email" id="email" class="form-control" required>
+						            </div>
+						            <button type="button" class="btn btn-primary" onclick="submitUpdate()">Submit Update</button>
+						        </form>
+						    </div>
+						</div>		
+						
+			<div class='dashboard-app'>
+				<h1><header class='dashboard-toolbar'>X-CUBE LABS</header></h1>		
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="UsersList.js"></script>
+	<script src="ProjectsList.js"></script>
+	<script src="AdminLogin.js"></script>
+	<script src="UsersList.js"></script>
+	<script src="Index.js"></script>
+	<script src="DashBoardUsers.js"></script>
+</body>
+</html>

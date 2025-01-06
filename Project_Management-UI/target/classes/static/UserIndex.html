@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Index.css">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class='dashboard'>
+	    <div class="dashboard-nav">
+			<h2 class ='pm'>Project Management</h2>
+	        <nav class="dashboard-nav-list">
+                <a href="#" class="dashboard-nav-item" > <i class="fas fa-home"></i> Home </a>
+                <a href="#" class="dashboard-nav-item active" onclick="showWelcomeMessage()"> <i class="fas fa-tachometer-alt"></i> Dashboard </a>
+                <a href="#" class="dashboard-nav-item" onclick="loadProjectsList()"> <i class="fas fa-project-diagram"></i> Projects </a>
+                <div class="nav-item-divider"></div>
+                <a href="#" class="dashboard-nav-item"> <i class="fas fa-sign-out-alt"></i> Logout </a>
+            </nav>
+	    </div>
+		<div class='dashboard-app'>
+			<div id="welcomeMessage" style="display: none;">
+				<!--<h2>Welcome to the Dashboard!</h2>
+				<p>Your account type is: Administrator</p>-->
+				<div class="hello-container">
+					<div class="hello-box" id="userCountContainer">
+						<h2>Users</h2>
+					       <h6>Total Users: <span id="userCount">0</span></h6>
+						   <h6>Active Users: <span id="usersActiveCount">0</span></h6>
+						   <h6>InActive Users: <span id="inActiveUsersCount">0</span></h6>
+					   </div>
+				        <div class="hello-box">
+				            <h3>Projects</h3>
+							<h6>Total Projects: <span id="projectsCount">0</span></h6>
+							<h6>Active Projects: <span id="projectsActiveCount">0</span></h6>
+							<h6>InActive Projects: <span id="projectsInActiveCount">0</span></h6>
+				        </div>
+				    </div>
+			</div>
+			<div class="profile-section">
+			    <i class="fas fa-user-circle profile-icon" onclick="toggleProfileMenu()"></i>
+			    <div class="profile-menu">
+			        <ul>
+			        <li><a href="#" onclick="userDetails()">View Details</a></li>  
+			            <li><a href="AdminLogin.html">Logout</a></li>
+			        </ul>
+			    </div>
+			</div>
+			<div id="userDetailsContainer" style="display:none;">
+			    <!-- User details will be displayed here -->
+			</div>			
+			<div id="userProjectListContainer" style="display:none;">						   
+			</div>
+			<div class='dashboard-app'>
+				<h1><header class='dashboard-toolbar'>X-CUBE LABS</header></h1>		
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="UserProjectDetails.js"></script>
+	<script src="AdminLogin.js"></script>
+	<script src="UserIndex.js"></script>
+	<script src="DashBoardUsers.js"></script>
+</body>
+</html>

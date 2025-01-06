@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login Page</title>
+    
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="AdminLogin.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Login</h1>
+    <div id="message" class="alert alert-success" style="display: none;"></div>
+    <form id="loginForm" novalidate>
+        <div class="form-group">
+            <label for="email" name="u">Email:</label>
+            <input type="email" id="email" class="form-control" required/>
+			<span id="emailError" class="text-danger" style="display: none;"></span>
+        </div>
+        <div class="form-group">
+            <label for="password"name="p">Password:</label>
+            <input type="password" id="password" class="form-control" required/>
+			<span id="passwordError" class="text-danger" style="display: none;"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+<script src="AdminLogin.js"></script> 
+</body>
+</html>
+
+
